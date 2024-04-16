@@ -1,16 +1,16 @@
 ﻿#include <iostream>
 using namespace std;
 
-//#define CALC
-//#define FACTORIAL
-#define POWER
-
-int Sum(int a, int b);
+int Sum(int a, int b = 0);
 int Diff(int a, int b);
 int Prod(int a, int b);
 double Quot(int a, int b);
 double Factorial(int n);
-double Power(double a, double n);
+double Power(double a, int n);
+
+//#define CALC
+//#define FACTORIAL
+#define POWER
 
 void main()
 {
@@ -35,13 +35,12 @@ void main()
 #endif // FACTORIAL
 
 #ifdef POWER
-	double a, n;
+	double a;
+	int	n;
 	cout << "Введите основание степени: "; cin >> a;
 	cout << "Введите показатель степени: "; cin >> n;
 	cout << "Полученный результат: " << Power(a, n) << endl;
-
 #endif // POWER
-
 }
 
 int Sum(int a, int b)
@@ -71,7 +70,7 @@ double Factorial(int n)
 	}
 	return f;
 }
-double Power(double a, double n)
+double Power(double a, int n)
 {
 	double N = 1;
 	if (n < 0)
