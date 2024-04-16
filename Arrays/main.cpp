@@ -7,10 +7,10 @@ using std::endl;
 #define tab "\t"
 
 void FillRand(int arr[], const int n);
-void Print(const int arr[], const int n);
+void Print(int arr[], const int n);
 void Sort(int arr[], const int n);
 int Sum(int arr[], const int n);
-double Avg(int arr[], const int n, int sum = 0);
+double Avg(int arr[], const int n);
 int Min(int arr[], const int n);
 int Max(int arr[], const int n);
 void shiftLeft(int shift, int arr[], const int n);
@@ -48,7 +48,7 @@ void main()
 			arr[i] = rand() % 100+1;
 		}
 	}
-	void Print(const int arr[], const int n)
+	void Print(int arr[], const int n)
 	{
 		for (int i = 0; i < n; i++)
 		{
@@ -80,10 +80,9 @@ void main()
 		}
 		return sum;
 	}
-	double Avg( int arr[], const int n, int sum)
+	double Avg(int arr[], const int n)
 	{
-		sum = Sum(arr, n);
-		return (double) sum / n;
+		return (double)Sum(arr,n) / n;
 	}
 	int Min(int arr[], const int n)
 	{
