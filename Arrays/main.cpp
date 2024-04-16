@@ -7,9 +7,12 @@ using std::endl;
 #define tab "\t"
 
 void FillRand(int arr[], const int n);
+void FillRand(double arr[], const int n);
 void Print(int arr[], const int n);
+void Print(double arr[], const int n);
 void Sort(int arr[], const int n);
 int Sum(int arr[], const int n);
+double Sum(double arr[], const int n);
 double Avg(int arr[], const int n);
 int Min(int arr[], const int n);
 int Max(int arr[], const int n);
@@ -33,12 +36,20 @@ void main()
 	cout << "Среднее-арифметическое значение: " << Avg(arr, n) << endl;
 	cout << "Минимальное значение: " << Min(arr, n) << endl;
 	cout << "Максимальное значение: " << Max(arr, n) << endl;
-	cout << "Введите количество сдвигов вправо: "; cin >> shift;
-	shiftLeft(shift, arr, n);
-	Print(arr, n);
-	cout << "Введите количество сдвигов влево: "; cin >> shift;
-	shiftRight(shift, arr, n);
-	Print(arr, n);
+	//cout << "Введите количество сдвигов вправо: "; cin >> shift;
+	//shiftLeft(shift, arr, n);
+	//Print(arr, n);
+	//cout << "Введите количество сдвигов влево: "; cin >> shift;
+	//shiftRight(shift, arr, n);
+	//Print(arr, n);
+	const int SIZE = 8;
+	double brr[SIZE];
+	FillRand(brr, SIZE);
+	Print(brr, SIZE);
+	/*cout << "Сумма элементов массива: " << Sum(brr, SIZE) << endl;
+	cout << "Среднее-арифметическое массива: " << Avg(brr, SIZE) << endl;
+	cout << "Минимальное значение: " << Min(brr, SIZE) << endl;
+	cout << "Максимальное значение: " << Max(brr, SIZE) << endl;*/
 }
 
 	void FillRand(int arr[], const int n)
@@ -48,7 +59,22 @@ void main()
 			arr[i] = rand() % 100+1;
 		}
 	}
+	void FillRand(double arr[], const int n)
+	{
+		for (int i = 0; i < n; i++)
+		{
+			arr[i] = rand() % 100;
+		}
+	}
 	void Print(int arr[], const int n)
+	{
+		for (int i = 0; i < n; i++)
+		{
+			cout << arr[i] << tab;
+		}
+		cout << endl;
+	}
+	void Print(double arr[], const int n)
 	{
 		for (int i = 0; i < n; i++)
 		{
@@ -72,6 +98,15 @@ void main()
 		}
 	}
 	int Sum(int arr[], const int n)
+	{
+		int sum = 0;
+		for (int i = 0; i < n; i++)
+		{
+			sum += arr[i];
+		}
+		return sum;
+	}
+	double Sum(double arr[], const int n)
 	{
 		int sum = 0;
 		for (int i = 0; i < n; i++)
