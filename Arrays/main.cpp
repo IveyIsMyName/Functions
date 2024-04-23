@@ -138,7 +138,6 @@ void main()
 	cout << "Минимальное значение: " << Min(i_arr_2, ROWS, COLS)<<endl;
 	cout << "Максимальное значение: " << Max(i_arr_2, ROWS, COLS)<<endl;
 
-
 }
 
 	void FillRand(int arr[], const int n)
@@ -300,98 +299,65 @@ void main()
 	}
 	void Sort(int arr[ROWS][COLS], const int ROWS, const int COLS)
 	{
-		for (int pass = 0; pass <= (ROWS * COLS); pass++)
+		for (int i = 0; i < ROWS; i++)
 		{
-			for (int i = 0; i < ROWS; i++)
+			for (int j = 0; j < COLS; j++)
 			{
-				for (int j = 0; j < COLS-1; j++)
+				for (int k = i; k < ROWS; k++)
 				{
-					if (arr[i][j+1] < arr[i][j])
+					for (int l = k == i ? j+1 : 0; l < COLS; l++)
 					{
-						int temp = arr[i][j];
-						arr[i][j] = arr[i][j+1];
-						arr[i][j+1] = temp;
+						if (arr[k][l] < arr[i][j])
+						{
+							int buffer = arr[i][j];
+							arr[i][j] = arr[k][l];
+							arr[k][l] = buffer;
+						}
 					}
 				}
 			}
-			for (int i = 0; i < COLS; i++)
-			{
-				for (int j = 0; j < ROWS-1; j++)
-				{
-					if (arr[i][j+1] < arr[i][j])
-					{
-						int temp = arr[i][j];
-						arr[i][j] = arr[i][j+1];
-						arr[i][j+1] = temp;
-					}
-
-				}
-			}
-			
 		}
 	}
 	void Sort(double arr[ROWS][COLS], const int ROWS, const int COLS)
 	{
-		for (int pass = 0; pass <= (ROWS * COLS); pass++)
+		for (int i = 0; i < ROWS; i++)
 		{
-			for (int i = 0; i < ROWS; i++)
+			for (int j = 0; j < COLS; j++)
 			{
-				for (int j = 0; j < COLS - 1; j++)
+				for (int k = i; k < ROWS; k++)
 				{
-					if (arr[i][j + 1] < arr[i][j])
+					for (int l = k == i ? j + 1 : 0; l < COLS; l++)
 					{
-						double temp = arr[i][j];
-						arr[i][j] = arr[i][j + 1];
-						arr[i][j + 1] = temp;
+						if (arr[k][l] < arr[i][j])
+						{
+							int buffer = arr[i][j];
+							arr[i][j] = arr[k][l];
+							arr[k][l] = buffer;
+						}
 					}
 				}
 			}
-			for (int i = 0; i < COLS; i++)
-			{
-				for (int j = 0; j < ROWS - 1; j++)
-				{
-					if (arr[i][j + 1] < arr[i][j])
-					{
-						double temp = arr[i][j];
-						arr[i][j] = arr[i][j + 1];
-						arr[i][j + 1] = temp;
-					}
-
-				}
-			}
-
 		}
 	}
 	void Sort(char arr[ROWS][COLS], const int ROWS, const int COLS)
 	{
-		for (int pass = 0; pass <= (ROWS * COLS); pass++)
+		for (int i = 0; i < ROWS; i++)
 		{
-			for (int i = 0; i < ROWS; i++)
+			for (int j = 0; j < COLS; j++)
 			{
-				for (int j = 0; j < COLS - 1; j++)
+				for (int k = i; k < ROWS; k++)
 				{
-					if (arr[i][j + 1] < arr[i][j])
+					for (int l = k == i ? j + 1 : 0; l < COLS; l++)
 					{
-						int temp = arr[i][j];
-						arr[i][j] = arr[i][j + 1];
-						arr[i][j + 1] = temp;
+						if (arr[k][l] < arr[i][j])
+						{
+							int buffer = arr[i][j];
+							arr[i][j] = arr[k][l];
+							arr[k][l] = buffer;
+						}
 					}
 				}
 			}
-			for (int i = 0; i < COLS; i++)
-			{
-				for (int j = 0; j < ROWS - 1; j++)
-				{
-					if (arr[i][j + 1] < arr[i][j])
-					{
-						int temp = arr[i][j];
-						arr[i][j] = arr[i][j + 1];
-						arr[i][j + 1] = temp;
-					}
-
-				}
-			}
-
 		}
 	}
 	int Sum(int arr[], const int n)
