@@ -7,13 +7,21 @@ using std::endl;
 #define tab "\t"
 
 void FillRand(int arr[], const int n);
-void Print(int arr[], const int n);
-void Sort(int arr[], const int n);
-int Sum(int arr[], const int n);
-double Avg(int arr[], const int n);
-int Min(int arr[], const int n);
-int Max(int arr[], const int n);
-void shiftLeft(int shift, int arr[], const int n);
+void FillRand(double arr[], const int n);
+
+template<typename T>void Print(T arr[], const int n);
+
+template<typename T>void Sort(T arr[], const int n);
+
+template<typename T>T Sum(T arr[], const int n);
+
+template<typename T>double Avg(T arr[], const int n);
+
+template<typename T>T Min(T arr[], const int n);
+
+template<typename T>T Max(T arr[], const int n);
+
+template<typename T>void shiftLeft(T shift, T arr[], const int n);
 void shiftRight(int shift, int arr[], const int n);
 
 void main()
@@ -33,22 +41,45 @@ void main()
 	cout << "Среднее-арифметическое значение: " << Avg(arr, n) << endl;
 	cout << "Минимальное значение: " << Min(arr, n) << endl;
 	cout << "Максимальное значение: " << Max(arr, n) << endl;
-	cout << "Введите количество сдвигов вправо: "; cin >> shift;
+	/*cout << "Введите количество сдвигов вправо: "; cin >> shift;
 	shiftLeft(shift, arr, n);
 	Print(arr, n);
 	cout << "Введите количество сдвигов влево: "; cin >> shift;
-	shiftRight(shift, arr, n);
+	shiftRight(shift, arr, n);*/
 	Print(arr, n);
+	const int D_SIZE = 8;
+	double d_arr[D_SIZE];
+	FillRand(d_arr, D_SIZE);
+	Print(d_arr, D_SIZE);
+	cout << "Сумма элементов массива: " << Sum(d_arr, D_SIZE) << endl;
+	cout << "Среднее-арифметическое массива: " << Avg(d_arr, D_SIZE) << endl;
+	cout << "Минимальное значение: " << Min(d_arr, D_SIZE) << endl;
+	cout << "Максимальное значение: " << Max(d_arr, D_SIZE) << endl;
+	Sort(d_arr, D_SIZE);
+	Print(d_arr, D_SIZE);
+
+	const int C_SIZE = 11;
+	char c_arr[C_SIZE];
+	FillRand(c_arr, C_SIZE);
+
 }
 
 	void FillRand(int arr[], const int n)
 	{
 		for (int i = 0; i < n; i++)
 		{
-			arr[i] = rand() % 100+1;
+			arr[i] = rand() % 100;
 		}
 	}
-	void Print(int arr[], const int n)
+	void FillRand(double arr[], const int n)
+	{
+		for (int i = 0; i < n; i++)
+		{
+			arr[i] = rand() % 10000;
+			arr[i] /= 100;
+		}
+	}
+	template<typename T>void Print(T arr[], const int n)
 	{
 		for (int i = 0; i < n; i++)
 		{
@@ -56,7 +87,7 @@ void main()
 		}
 		cout << endl;
 	}
-	void Sort(int arr[], const int n)
+	template<typename T>void Sort(T arr[], const int n)
 	{
 		for (int i = 0; i < n; i++)
 		{
@@ -64,45 +95,45 @@ void main()
 			{
 				if (arr[j] < arr[i])
 				{
-					int buffer = arr[i];
+					T buffer = arr[i];
 					arr[i] = arr[j];
 					arr[j] = buffer;
 				}
 			}
 		}
 	}
-	int Sum(int arr[], const int n)
+	template<typename T>T Sum(T arr[], const int n)
 	{
-		int sum = 0;
+		T sum = 0;
 		for (int i = 0; i < n; i++)
 		{
 			sum += arr[i];
 		}
 		return sum;
 	}
-	double Avg(int arr[], const int n)
+	template<typename T>double Avg(T arr[], const int n)
 	{
 		return (double)Sum(arr,n) / n;
 	}
-	int Min(int arr[], const int n)
+	template<typename T>T Min(T arr[], const int n)
 	{
-		int min = arr[0];
+		T min = arr[0];
 		for (int i = 0; i < n; i++)
 		{
 			if (min > arr[i]) min = arr[i];
 		}
 		return min;
 	}
-	int Max(int arr[], const int n)
+	template<typename T>T Max(T arr[], const int n)
 	{
-		int max = arr[0];
+		T max = arr[0];
 		for (int i = 0; i < n; i++)
 		{
 			if (max < arr[i]) max = arr[i];
 		}
 		return max;
 	}
-	void shiftLeft(int shift, int arr[], const int n)
+	template<typename T>void shiftLeft(T shift, T arr[], const int n)
 	{
 		for (int i = 0; i < shift; i++)
 		{
