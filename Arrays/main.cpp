@@ -1,25 +1,8 @@
-﻿#include <iostream>
-using namespace std;
-using std::cin;
-using std::cout;
-using std::endl;
+﻿#include "stdafx.h"
+#include "Constants.h"
 
-#define tab "\t"
-#define delimiter "\n------------------------------------------\n"
-
-const int ROWS = 3;
-const int COLS = 4;
-
-void FillRand(int arr[], const int n);
-void FillRand(double arr[], const int n);
-void FillRand(char arr[], const int n);
-
-void FillRand(int arr[ROWS][COLS], const int ROWS, const int COLS);
-void FillRand(double arr[ROWS][COLS], const int ROWS, const int COLS);
-void FillRand(char arr[ROWS][COLS], const int ROWS, const int COLS);
-
-template<typename T>void Print(T arr[], const int n);
-template<typename T>void Print(T arr[ROWS][COLS], const int ROWS, const int COLS);
+#include "FillRand.h"
+#include "Print.h"
 
 template<typename T>void Sort(T arr[], const int n);
 template<typename T>void Sort(T arr[ROWS][COLS], const int ROWS, const int COLS);
@@ -104,80 +87,7 @@ void main()
 	cout << "Минимальное значение: " << Min(i_arr_2, ROWS, COLS) << endl;
 	cout << "Максимальное значение: " << Max(i_arr_2, ROWS, COLS) << endl;
 }	
-	void FillRand(int arr[], const int n)
-	{
-		for (int i = 0; i < n; i++)
-		{
-			arr[i] = rand() % 100;
-		}
-	}
-	void FillRand(double arr[], const int n)
-	{
-		for (int i = 0; i < n; i++)
-		{
-			arr[i] = rand() % 10000;
-			arr[i] /= 100;
-		}
-	}
-	void FillRand(char arr[], const int n)
-	{
-		for (int i = 0; i < n; i++)
-		{
-			arr[i] = rand();
-		}
-	}
-	void FillRand(int arr[ROWS][COLS], const int ROWS, const int COLS)
-	{
-		for (int i = 0; i < ROWS; i++)
-		{
-			for (int j = 0; j < COLS; j++)
-			{
-				arr[i][j] = rand() % 100;
-			}
-		}
-	}
-	void FillRand(double arr[ROWS][COLS], const int ROWS, const int COLS)
-	{
-		for (int i = 0; i < ROWS; i++)
-		{
-			for (int j = 0; j < COLS; j++)
-			{
-				arr[i][j] = rand() % 10000;
-				arr[i][j] /= 100;
-			}
-		}
-	}
-	void FillRand(char arr[ROWS][COLS], const int ROWS, const int COLS)
-	{
-		for (int i = 0; i < ROWS; i++)
-		{
-			for (int j = 0; j < COLS; j++)
-			{
-				arr[i][j] = rand() % 10000;
-				arr[i][j] /= 100;
-			}
-		}
-	}
-	template<typename T>void Print(T arr[], const int n)
-	{
-		for (int i = 0; i < n; i++)
-		{
-			cout << arr[i] << tab;
-		}
-		cout << endl;
-	}
-	template<typename T>void Print(T arr[ROWS][COLS], const int ROWS, const int COLS)
-	{
-		for (int i = 0; i < ROWS; i++)
-		{
-			for (int j = 0; j < COLS; j++)
-			{
-				cout << arr[i][j]<< tab;
-			}
-			cout << endl;
-		}
-		cout << endl;
-	}
+	
 	template<typename T>void Sort(T arr[], const int n)
 	{
 		for (int i = 0; i < n; i++)
