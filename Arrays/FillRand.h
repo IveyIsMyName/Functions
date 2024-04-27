@@ -1,6 +1,6 @@
 #pragma once
-#include"stdafx.h"
 #include"Constants.h"
+#include "stdafx.h"
 
 void FillRand(int arr[], const int n);
 void FillRand(double arr[], const int n);

@@ -3,30 +3,9 @@
 
 #include "FillRand.h"
 #include "Print.h"
-
-template<typename T>void Sort(T arr[], const int n);
-template<typename T>void Sort(T arr[ROWS][COLS], const int ROWS, const int COLS);
-
-template<typename T>T Sum(T arr[], const int n);
-const char* Sum(char arr[], const int n);
-template<typename T>T Sum(T arr[ROWS][COLS], const int ROWS, const int COLS);
-
-template<typename T>double Avg(T arr[], const int n);
-const char* Avg(char arr[], const int n);
-template<typename T>double Avg(T arr[ROWS][COLS], const int ROWS, const int COLS);
-
-template<typename T>T Min(T arr[], const int n);
-template<typename T>T Min(T arr[ROWS][COLS], const int ROWS, const int COLS);
-
-template<typename T>T Max(T arr[], const int n);
-template<typename T>T Max(T arr[ROWS][COLS], const int ROWS, const int COLS);
-
-template<typename T>void shiftLeft(int shift, T arr[], const int n);
-template<typename T>void shiftLeft(int shift, T arr[ROWS][COLS], const int ROWS, const int COLS);
-
-template<typename T>void shiftRight(int shift, T arr[], const int n);
-template<typename T>void shiftRight(int shift, T arr[ROWS][COLS], const int ROWS, const int COLS);
-
+#include "Sort.h"
+#include "Statistics.h"
+#include "Shifts.h"
 
 void main()
 {
@@ -36,6 +15,7 @@ void main()
 	int shift;
 
 	cout << delimiter << "Int array" << delimiter;
+	
 	FillRand(arr, n);
 	Print(arr, n);
 	Sort(arr, n);
@@ -48,8 +28,8 @@ void main()
 	shiftLeft(shift, arr, n);
 	Print(arr, n);
 	cout << "Введите количество сдвигов влево: "; cin >> shift;
-	shiftRight(shift, arr, n);*/
-	Print(arr, n);
+	shiftRight(shift, arr, n);
+	Print(arr, n);*/
 
 	cout << delimiter << "Double array"<<delimiter;
 
@@ -87,151 +67,3 @@ void main()
 	cout << "Минимальное значение: " << Min(i_arr_2, ROWS, COLS) << endl;
 	cout << "Максимальное значение: " << Max(i_arr_2, ROWS, COLS) << endl;
 }	
-	
-	template<typename T>void Sort(T arr[], const int n)
-	{
-		for (int i = 0; i < n; i++)
-		{
-			for (int j = i+1; j < n; j++)
-			{
-				if (arr[j] < arr[i])
-				{
-					T buffer = arr[i];
-					arr[i] = arr[j];
-					arr[j] = buffer;
-				}
-			}
-		}
-	}
-	template<typename T>void Sort(T arr[ROWS][COLS], const int ROWS, const int COLS)
-	{
-		for (int i = 0; i < ROWS; i++)
-		{
-			for (int j = 0; j < COLS; j++)
-			{
-				for (int k = i; k < ROWS; k++)
-				{
-					for (int l = k == i ? j + 1 : 0; l < COLS; l++)
-					{
-						if (arr[k][l] < arr[i][j])
-						{
-							T buffer = arr[i][j];
-							arr[i][j] = arr[k][l];
-							arr[k][l] = buffer;
-						}
-					}
-				}
-			}
-		}
-	}
-	template<typename T>T Sum(T arr[], const int n)
-	{
-		T sum = 0;
-		for (int i = 0; i < n; i++)
-		{
-			sum += arr[i];
-		}
-		return sum;
-	}
-	const char* Sum(char arr[], const int n)
-	{
-		return "Невозможно вычислить сумму для типа данных 'char'";
-	}
-	template<typename T>T Sum(T arr[ROWS][COLS], const int ROWS, const int COLS)
-	{
-		T sum = 0;
-		for (int i = 0; i < ROWS; i++)
-		{
-			for (int j = 0; j < COLS; j++)
-			{
-				sum += arr[i][j];
-			}
-		}
-		return sum;
-	}
-	template<typename T>double Avg(T arr[], const int n)
-	{
-		return (double)Sum(arr,n) / n;
-	}
-	const char* Avg(char arr[], const int n)
-	{
-		return "Невозможно вычислить среднее-арфиметическое для типа данных 'char'";
-	}
-	template<typename T>double Avg(T arr[ROWS][COLS], const int ROWS, const int COLS)
-	{
-		return (double)Sum(arr, ROWS, COLS) / (ROWS * COLS);
-	}
-	template<typename T>T Min(T arr[], const int n)
-	{
-		T min = arr[0];
-		for (int i = 0; i < n; i++)
-		{
-			if (min > arr[i]) min = arr[i];
-		}
-		return min;
-	}
-	template<typename T>T Min(T arr[ROWS][COLS], const int ROWS, const int COLS)
-	{
-		T min = arr[0][0];
-		for (int i = 0; i < ROWS; i++)
-		{
-			for (int j = 0; j < COLS; j++)
-			{
-				if (arr[i][j] < min)min = arr[i][j];
-			}
-		}
-		return min;
-	}
-	template<typename T>T Max(T arr[], const int n)
-	{
-		T max = arr[0];
-		for (int i = 0; i < n; i++)
-		{
-			if (max < arr[i]) max = arr[i];
-		}
-		return max;
-	}
-	template<typename T>T Max(T arr[ROWS][COLS], const int ROWS, const int COLS)
-	{
-		T max = arr[0][0];
-		for (int i = 0; i < ROWS; i++)
-		{
-			for (int j = 0; j < COLS; j++)
-			{
-				if (arr[i][j] > max)max = arr[i][j];
-			}
-		}
-		return max;
-	}
-	template<typename T>void shiftLeft(int shift, T arr[], const int n)
-	{
-		for (int i = 0; i < shift; i++)
-		{
-			int temp = arr[n - 1];
-			for (int i = n - 1; i > 0; i--)
-			{
-				arr[i] = arr[i - 1];
-			}
-			arr[0] = temp;
-		}
-	}
-	template<typename T>void shiftLeft(int shift, T arr[ROWS][COLS], const int ROWS, const int COLS)
-	{
-
-	}
-	template<typename T>void shiftRight(int shift, T arr[], const int n)
-	{
-		for (int i = 0; i < shift; i++)
-		{
-			int temp = arr[0];
-			for (int i = 0; i < n; i++)
-			{
-				arr[i] = arr[i + 1];
-			}
-			arr[n - 1] = temp;
-		}
-	}
-	template<typename T>void shiftRight(int shift, T arr[ROWS][COLS], const int ROWS, const int COLS)
-	{
-
-	}
