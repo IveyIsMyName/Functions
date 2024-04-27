@@ -307,7 +307,7 @@ void main()
 	}
 	template<typename T>void shiftLeft(int shift, T arr[ROWS][COLS], const int ROWS, const int COLS)
 	{
-
+		shiftLeft(arr[0], ROWS * COLS, shift);
 	}
 	template<typename T>void shiftRight(int shift, T arr[], const int n)
 	{
@@ -323,5 +323,5 @@ void main()
 	}
 	template<typename T>void shiftRight(int shift, T arr[ROWS][COLS], const int ROWS, const int COLS)
 	{
-
+		shiftRight(arr[0], ROWS * COLS, shift);
 	}
